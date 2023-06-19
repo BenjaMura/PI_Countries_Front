@@ -26,7 +26,7 @@ const Form = () => {
         setTimeout(() => {
             setLoading(false)
         }, 300)
-        if (!countriesCopy.length) dispatch(getCountries())
+        dispatch(getCountries())
     }, [])
 
     const isFormEmpty = useMemo(() => {

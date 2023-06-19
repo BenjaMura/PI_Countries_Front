@@ -9,7 +9,7 @@ const Activities = () => {
     const dispatch = useDispatch();
     const { activities } = useSelector((state) => state);
     useEffect(() => {
-        if (!activities.length) dispatch(getActivities());
+        dispatch(getActivities());
     }, [])
 
     return (

@@ -28,7 +28,7 @@ const Edit = () => {
         setTimeout(() => {
             setLoading(false)
         }, 300)
-        if (!countriesCopy.length) dispatch(getCountries())
+        dispatch(getCountries())
         return () => {
             dispatch(getActivities());
         };
