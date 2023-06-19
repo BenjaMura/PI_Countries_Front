@@ -4,10 +4,9 @@ import './main.css'
 import store from "./redux/store";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import axios from 'axios';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-axios.defaults.baseURL="https://pi-countries-back-dmol.onrender.com";
+
 root.render(
   <Provider store={store}>
     <BrowserRouter>
