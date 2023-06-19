@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from './components/Footer/Footer';
 
 function App() {
+  const URL = "https://pi-countries-back-dmol.onrender.com";
   const location = useLocation();
 
   const showComponents = () => {
@@ -23,13 +24,13 @@ function App() {
       {showComponents() &&
       <NavBar />}
       <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/activities" element={<Activities />} />
-        <Route path="/create" element={<Form />} />
-        <Route path="/edit/:id" element={<Edit />} />
-        <Route path='*' element={<NotFound />}/>
+        <Route path={`${URL}/`} element={<Landing />} />
+        <Route path={`${URL}/home`} element={<Home />} />
+        <Route path={`${URL}/detail/:id`} element={<Detail />} />
+        <Route path={`${URL}/activities`} element={<Activities />} />
+        <Route path={`${URL}/create`} element={<Form />} />
+        <Route path={`${URL}/edit/:id`} element={<Edit />} />
+        <Route path={`${URL}*`} element={<NotFound />}/>
       </Routes>
       {showComponents() &&
       <Footer />}
