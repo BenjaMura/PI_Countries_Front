@@ -1,0 +1,30 @@
+.div {
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    padding: 1em;
+    margin-right: 1em;
+    height: 5vh;
+    width: 20vw;
+    border-radius: 1em;
+    font-size: 2.5vh;
+    border: none;
+}
+
+.btn {
+    border: none;
+    height: 5vh;
+    padding: 0;
+    width: 10vw;
+    border-radius: 1em;
+    font-size: 2.75vh;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(150, 68, 68);
+    color: rgb(236, 219, 219);
+    box-shadow: 1px 1px 1px rgba(242, 237, 237, 0.74);
+}

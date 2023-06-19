@@ -1,0 +1,81 @@
+.divHome {
+    background-image: url("../../assets/images/Home.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 95vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.divFilters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+}
+
+.selFilters {
+    background-color: rgba(106, 199, 207, 0.941);
+    text-align: center;
+    height: 3.5vh;
+    width: 15vw;
+    margin: 0 0.25em;
+    border-radius: 1em;
+}
+
+.selFilters:hover{
+    cursor: pointer;
+    background-color: rgba(198, 71, 48, 0.853);
+    color: #fff;
+}
+
+.btnReset {
+    background-color: rgba(228, 161, 116, 0.821);
+    color: #fff;
+    border-style: inset;
+    border-radius: 1em;
+    height: 3.5vh;
+    margin-left: 0.25em;
+    width: 15vw;
+    border: ridge;
+    border-color: rgba(250, 182, 114, 0.641);
+}
+
+.btnReset:hover {
+    cursor: pointer;
+    background-color: rgba(192, 60, 57, 0.853);
+    color: #fff;
+    font-weight: bold;
+}
+
+.divNotFound {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 10vh;
+    text-shadow: 2px 3px 4px #fff;
+    height: 77vh;
+}
+
+.btnResetNF {
+    background-color: rgba(228, 161, 116, 0.821);
+    color: #fff;
+    border-style: inset;
+    border-radius: 1em;
+    height: 7vh;
+    font-size: 3vh;
+    width: 15vw;
+    border: ridge;
+    border-color: rgba(250, 182, 114, 0.641);
+}
+
+.btnResetNF:hover {
+    cursor: pointer;
+    background-color: rgba(192, 60, 57, 0.853);
+    color: #fff;
+    font-weight: bold;
+}

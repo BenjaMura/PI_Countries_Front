@@ -1,0 +1,31 @@
+.divLoad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.944);
+  min-height: 110vh;
+  min-width: 100vw;
+  margin-top: -3.5em;
+  position: relative;
+}
+
+.rot {
+  width: 30vh;
+  height: 30vh;
+  border-radius: 50%;
+  background-image: url("../../assets/images/Loading.jpg");
+  background-size: cover;
+  background-position-x: center;
+  background-repeat: repeat-x;
+  box-shadow: inset 15px 0px 20px 6px black;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        background-position-x: 0vh;
+    }
+    to {
+        background-position-x: 40vh;
+    }
+}

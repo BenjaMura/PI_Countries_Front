@@ -1,0 +1,56 @@
+.divPag {
+    font-family: monospace;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+    margin-bottom: 0.25em;
+}
+
+.h2 {
+    margin: 0 0.5em;
+    width: 13vw;
+    font-size: 3vh;
+    border-radius: 0.5em;
+    background-color: rgba(95, 158, 160, 0.915);
+    color: #fff;
+}
+
+.divBtn {
+    align-items: center;
+}
+
+.btnNum {
+    font-family: monospace;
+    width: 2vw;
+    background-color: rgba(95, 158, 160, 0.889);
+    border-radius: 0.5em;
+    margin: 0 0.5em;
+    color: #fff;
+    height: 3vh;
+}
+
+.btnNum:hover {
+    cursor: pointer;
+    height: 3.5vh;
+    background-color: rgba(227, 64, 64, 0.919);
+    font-weight: 800;
+}
+
+.btnPN {
+    margin: 0 0.5em;
+    width: 7vw;
+    font-family: monospace;
+    background-color: rgba(95, 158, 160, 0.918);
+    border-radius: 0.5em;
+    height: 3.5vh;
+    color: #fff;
+}
+
+.btnPN:hover {
+    background-color: rgb(184, 96, 96);
+    cursor: pointer;
+    height: 4vh;
+    font-weight: 800;
+}

@@ -1,0 +1,46 @@
+.div {
+    background-color: rgb(87, 196, 163);
+    border-radius: 1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 2vw;
+    width: 90vw;
+    margin-bottom: 0.5em;
+}
+
+.divbtn {
+    margin-left: 1em;
+}
+
+.divbtn button, .btnEdit {
+    background-color: rgb(216, 216, 216);
+    border-radius: 0.25em;
+    height: 4vh;
+}
+
+.divbtn button:hover, .btnEdit:hover {
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+}
+
+.divAct {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+    font-size: 3vh;
+}
+
+.divAct img {
+    width: 2vw;
+    height: 3vh;
+    border-radius: 0.25em;
+    margin-right: 0.25em;
+}
+
+.divAct h4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}

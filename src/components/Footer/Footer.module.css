@@ -1,0 +1,13 @@
+.divFoot {
+    background-image: linear-gradient(rgba(112, 165, 205, 0.718),rgba(87, 83, 106, 0.899));
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.img {
+    width: 3vw;
+    height: 5vh;
+}

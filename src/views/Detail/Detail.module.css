@@ -1,0 +1,60 @@
+.divDetail {
+    background-image: url("../../assets/images/Detail.jpg");
+    background-repeat: repeat;
+    background-size: 400px;
+    min-height: 95vh;
+}
+
+.divCountry {
+    display: flex;
+    flex-direction: row;
+}
+
+.divImgCountry {
+    margin: 2em 0 0 2em;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: #ffffff;
+    text-shadow: 2px 0 4px  rgb(0, 0, 0);
+    background-color: rgb(137, 215, 237);
+    border-radius: 2em;
+    width: 50%;
+}
+
+.divImgCountry img {
+    height: 32vh;
+    width: 22vw;
+    margin-top: 1em;
+    border-radius: 1.5em;
+    box-shadow: 1px 1px 1px 8px white;
+}
+
+.divActCountry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(136, 233, 236);
+    margin: 2em 0 0 2em;
+    border-radius: 2em;
+    width: 44%;
+}
+
+.divAct {
+    background-color: rgb(168, 252, 115);
+    font-style: italic;
+    width: 90%;
+    border-radius: 1em;
+    height: 18vh;
+    margin-bottom: 0.5em;
+}
+
+.h3 {
+    font-size: 3.25vh;
+}
+
+.h4 {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 4em;
+    font-size: 2.75vh;
+    margin-top: -1em;
+}

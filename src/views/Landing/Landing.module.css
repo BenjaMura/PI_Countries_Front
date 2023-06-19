@@ -1,0 +1,64 @@
+.div {
+  background-image: url("../../assets/images/Landing.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: grid;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  width: 35vw;
+  height: 35vh;
+  border-radius: 100%;
+  opacity: 80%;
+  font-size: 15vh;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.btn:hover{
+  opacity: 100%;
+  text-shadow: 2px 3px 5px rgb(24, 215, 240);
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+
+.h1, .h2 {
+  font-family: cursive;
+  background-image: linear-gradient(
+    -225deg,
+   #26cf3a 0%,
+   #13cddb 29%,
+   #ff9d13 67%,
+   #fff800 100%
+   );
+   background-size: auto auto;
+   background-clip: border-box;
+   background-size: 200% auto;
+   color: #fff;
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   animation: textclip 2s linear infinite;
+   display: inline-block;
+   font-size: 10vh;
+   margin-bottom: -3em;
+  }
+  
+  @keyframes textclip {
+    to {
+      background-position: 200% center;
+    }
+  }
+  
+  .h2 {
+    margin-top: -8em;
+    font-family: cursive;
+    font-size: 8vh;
+}

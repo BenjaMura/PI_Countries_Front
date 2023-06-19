@@ -1,0 +1,155 @@
+.div {
+    background-image: url("../../assets/images/Create.jpg");
+    background-repeat: repeat;
+    background-size: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed;
+}
+
+.divForm {
+    background-color: rgba(136, 205, 80, 0.97);
+    width: 80%;
+    border-radius: 2em;
+    margin: 1em;
+    padding: 2em;
+}
+
+.form {
+    font-family:fantasy;
+}
+
+.divAct {
+    display: flex;
+    align-items: center;
+    font-size: 5vh;
+    gap: 1em;
+    margin-bottom: 0.5em;
+    height: 4vh;
+}
+
+.labelAct {
+    margin: -0.25em 0 0 1em;
+    width: 20vw;
+    text-align: left;
+}
+
+.inputAct {
+    width: 40vw;
+    height: 4vh;
+    background-color: rgb(151, 210, 210);
+    border-radius: 0.5em;
+    padding: 0.25em;
+    font-size: medium;
+    margin-left: -4em;
+}
+
+.divDif, .divDur {
+    display: flex;
+    align-items: center;
+    font-size: 3vh;
+    gap: 1em;
+    margin: 0 0 0.5em 0.5em;
+}
+
+.inputDif, .inputDur {
+    width: 3vw;
+    height: 4vh;
+    background-color: rgb(155, 207, 211);
+    border-radius: 0.5em;
+    padding: 0.25em;
+    font-size: large;
+    text-align: center;
+}
+
+.divSeas {
+    background-color: rgb(180, 216, 249);
+    border-radius: 1em;
+    padding: 1em;
+    width: 50%;
+    display: flex;
+    margin-left: 25%;
+    flex-direction: column;
+    font-size: 3vh;
+}
+
+.labelSeas, .labelCountries {
+    font-size: 4vh;
+    margin-bottom: 0.5em;
+}
+
+.labelsSeas, .labelsCounts {
+    cursor: pointer;
+}
+
+.inputSeas {
+    width: 2.5vh;
+    height: 2.5vh;
+    cursor: pointer;
+}
+
+.divCountries {
+    margin-top: 1em;
+    font-size: 3vh;
+}
+
+.divCounts {
+    background-color: rgba(145, 235, 249, 0.688);
+    border-radius: 1em;
+    display: grid;
+    gap: 10px;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: start;
+    align-items: center;
+    text-align: left;
+}
+
+.imgCountries {
+    border: ridge black;
+    width: 15px;
+    height: 10px;
+}
+
+.inputImg {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+}
+
+.labelCountries {
+    margin-right: 1em;
+}
+
+.spans {
+    color: rgb(233, 21, 21);
+    font-size:20px;
+    font-weight: bold;
+}
+
+.btnSubmit {
+    margin-top: 2em;
+    width: 30vw;
+    height: 7vh;
+    border-radius: 1em;
+    font-size: 3vh;
+}
+
+.btnSubmit:enabled {
+    margin-top: 2em;
+    width: 30vw;
+    height: 7vh;
+    border-radius: 1em;
+    font-size: 3vh;
+    background-color: rgb(21, 158, 236);
+    color: rgb(244, 244, 22);
+}
+
+.btnSubmit:enabled:hover {
+    cursor: pointer;
+    background-color: brown;
+    color: #fff;
+    box-shadow: 1px 1px 1px 1px #fff;
+}

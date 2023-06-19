@@ -1,0 +1,48 @@
+.div {
+    width: 18vw;
+    height: 40vh;
+    border: solid rgba(0, 0, 0, 0.584);
+    border-radius: 1em;
+    margin-bottom: 0.5em;
+    background-color: rgba(66, 129, 148, 0.782);
+}
+
+.div:hover, .div:hover .img {
+    box-shadow: 2px 2px 2px #fff;
+    transition-delay: 0.1s;
+}
+
+.div:hover .h2, .div:hover .h3 {
+    text-shadow: 2px 0px 10px #ffffff83;
+    transition-delay: 0.1s;
+}
+
+.img {
+    margin-top: 1em;
+    width: 10vw;
+    height: 15vh;
+    border: solid rgba(0, 0, 0, 0.625);
+    border-radius: 1em;
+}
+
+.link {
+    color: rgb(198, 244, 239);
+    text-decoration: none;
+}
+
+.link:after {
+    color: rgb(198, 244, 239);
+}
+
+.h2 {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2vw;
+    padding: 0 0.2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.h3 {
+    font-size: 1.5vw;
+}
