@@ -1,10 +1,12 @@
 import axios from "axios";
 import { GET_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, NUMBER_PAGE, GET_COUNTRY_BY_ID, CLEAN_DETAIL, POST_ACTIVITY, RESET, GET_ACTIVITIES, SORT_BY_NAME, SORT_BY_POPULATION, FILTER_CONTINENT, FILTER_ACTIVITY, DELETE_ACTIVITY, PUT_ACTIVITY_BY_ID } from "./actionsTypes";
 
+const URL = "https://pi-countries-back-dmol.onrender.com";
+
 export const getCountries = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`/countries`);
+            const { data } = await axios.get(`${URL}/countries`);
             if (!data.length) throw Error();
             return dispatch({ type: GET_COUNTRIES, payload: data})
         } catch (error) {
@@ -16,7 +18,7 @@ export const getCountries = () => {
 export const getCountryByName = (name) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`/countries/name?name=${name}`);
+            const { data } = await axios.get(`${URL}/countries/name?name=${name}`);
             if (!data) throw Error();
             return dispatch({ type: GET_COUNTRY_BY_NAME, payload: data})
         } catch (error) {
@@ -28,7 +30,7 @@ export const getCountryByName = (name) => {
 export const getCountryById = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`/countries/${id}`);
+            const { data } = await axios.get(`${URL}/countries/${id}`);
             if (!data) throw Error();
             return dispatch({ type: GET_COUNTRY_BY_ID, payload: data})
         } catch (error) {
@@ -40,7 +42,7 @@ export const getCountryById = (id) => {
 export const postActivity = (form) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.post(`/activities`, form);
+            const { data } = await axios.post(`${URL}/activities`, form);
             if (!data) throw Error();
             return dispatch({ type: POST_ACTIVITY, payload: data });
         } catch (error) {
@@ -52,7 +54,7 @@ export const postActivity = (form) => {
 export const getActivities = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`/activities`);
+            const { data } = await axios.get(`${URL}/activities`);
             if (!data.length) throw Error();
             return dispatch({ type: GET_ACTIVITIES, payload: data})
         } catch (error) {
@@ -64,7 +66,7 @@ export const getActivities = () => {
 export const deleteActivity = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.delete(`/activities/${id}`);
+            const { data } = await axios.delete(`${URL}/activities/${id}`);
             if (!data) throw Error();
             return dispatch({ type: DELETE_ACTIVITY, payload: id})
         } catch (error) {
@@ -76,7 +78,7 @@ export const deleteActivity = (id) => {
 export const editActivity = (form, id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.put(`/activities/edit/${id}`, form);
+            const { data } = await axios.put(`${URL}/activities/edit/${id}`, form);
             if (!data) throw Error();
             return dispatch({ type: PUT_ACTIVITY_BY_ID, payload: data})
         } catch (error) {
