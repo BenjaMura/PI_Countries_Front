@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, NUMBER_PAGE, GET_COUNTRY_BY_ID, CLEAN_DETAIL, POST_ACTIVITY, RESET, GET_ACTIVITIES, SORT_BY_NAME, SORT_BY_POPULATION, FILTER_CONTINENT, FILTER_ACTIVITY, DELETE_ACTIVITY, PUT_ACTIVITY_BY_ID, } from "./actionsTypes";
+import { GET_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, NUMBER_PAGE, GET_COUNTRY_BY_ID, CLEAN_DETAIL, POST_ACTIVITY, RESET, GET_ACTIVITIES, SORT_BY_NAME, SORT_BY_POPULATION, FILTER_CONTINENT, FILTER_ACTIVITY, DELETE_ACTIVITY, PUT_ACTIVITY_BY_ID, LOADING } from "./actionsTypes";
 
 const initialState = {
     countries: [],
@@ -6,6 +6,7 @@ const initialState = {
     countryDetail: {},
     activities: [],
     numPage: 1,
+    loading: false,
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -15,17 +16,20 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 countries: payload,
                 countriesCopy: payload,
+                loading: false,
             };
         case GET_ACTIVITIES:
             return {
                 ...state,
                 activities: payload,
+                loading: false,
             };
         case GET_COUNTRY_BY_NAME:
             return {
                 ...state,
                 countries: payload,
                 numPage: 1,
+                loading: false,
             };
         case NEXT_PAGE:
             return {
@@ -46,6 +50,7 @@ const reducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 countryDetail: payload,
+                loading: false,
             };
         case CLEAN_DETAIL:
             return {
@@ -54,6 +59,11 @@ const reducer = (state = initialState, { type, payload }) => {
             };
         case PUT_ACTIVITY_BY_ID:
             return { ...state };
+        case LOADING:
+            return {
+                ...state,
+                loading: true,
+            }
         case POST_ACTIVITY:
             return {
                 ...state,
@@ -103,6 +113,7 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 activities: state.activities.filter(activity => activity.id !== payload),
                 numPage: 1,
+                loading: false,
             };
         default:
             return { ...state };

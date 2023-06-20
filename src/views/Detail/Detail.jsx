@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { cleanDetail, getCountryById } from "../../redux/actions";
+import Loading from "../../components/Loading/Loading";
 
 const Detail = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
-    const countryDetail = useSelector((state) => state.countryDetail);
+    const { countryDetail, loading } = useSelector((state) => state);
 
     useEffect(() => {
         dispatch(getCountryById(id));
@@ -18,6 +19,7 @@ const Detail = () => {
 
     return (
         <div className={stylesDetail.divDetail}>
+            {loading ? <Loading /> : 
             <div className={stylesDetail.divCountry}>
                 <div className={stylesDetail.divImgCountry}>
                     <img src={countryDetail.flag} alt={countryDetail.name}/>
@@ -52,6 +54,7 @@ const Detail = () => {
                     })}
                 </div> : null}
             </div>
+            }
         </div>
     );
 };

@@ -2,13 +2,14 @@
 import stylesHome from "./Home.module.css";
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import Pagination from "../../components/Pagination/Pagination";
+import Loading from "../../components/Loading/Loading";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountries, getActivities, sortByName, sortByPopulation, filterContinent, filterActivity, reset } from "../../redux/actions";
 
 const Home = () => {
     const dispatch = useDispatch();
-    const { countries, numPage, activities, countriesCopy } = useSelector((state) => state);
+    const { countries, numPage, activities, countriesCopy, loading } = useSelector((state) => state);
 
     useEffect(() => {
         if (!countriesCopy.length) dispatch(getCountries());
@@ -51,6 +52,7 @@ const Home = () => {
 
     return (
         <div className={stylesHome.divHome}>
+            {loading ? <Loading /> : <>
             <div className={stylesHome.divFilters}>
                 <select className={stylesHome.selFilters} onChange={handleSortByName} name="sortByName" defaultValue={"default"}>
                     <option value="default" disabled>Sort by Name...</option>
@@ -87,6 +89,7 @@ const Home = () => {
                 <CardsContainer currentCountries={currentCountries}/>
             </div>
             {!countries.length && <div className={stylesHome.divNotFound}>Countries Not Found <button className={stylesHome.btnResetNF} onClick={handleReset}>Reset</button></div>}
+            </>}
         </div>
     )
 };
