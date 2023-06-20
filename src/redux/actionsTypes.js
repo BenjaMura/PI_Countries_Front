@@ -15,3 +15,4 @@ export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
 export const DELETE_ACTIVITY = "DELETE_ACTIVITY";
 export const PUT_ACTIVITY_BY_ID = "PUT_ACTIVITY_BY_ID";
 export const LOADING = "LOADING";
+export const NO_LOADING = "NO_LOADING";

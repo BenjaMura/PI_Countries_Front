@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, NUMBER_PAGE, GET_COUNTRY_BY_ID, CLEAN_DETAIL, POST_ACTIVITY, RESET, GET_ACTIVITIES, SORT_BY_NAME, SORT_BY_POPULATION, FILTER_CONTINENT, FILTER_ACTIVITY, DELETE_ACTIVITY, PUT_ACTIVITY_BY_ID, LOADING } from "./actionsTypes";
+import { GET_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, NUMBER_PAGE, GET_COUNTRY_BY_ID, CLEAN_DETAIL, POST_ACTIVITY, RESET, GET_ACTIVITIES, SORT_BY_NAME, SORT_BY_POPULATION, FILTER_CONTINENT, FILTER_ACTIVITY, DELETE_ACTIVITY, PUT_ACTIVITY_BY_ID, LOADING, NO_LOADING } from "./actionsTypes";
 
 const initialState = {
     countries: [],
@@ -57,17 +57,22 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 countryDetail: {},
             };
+        case POST_ACTIVITY:
+            return {
+                ...state,
+                activities: [...state.activities, payload],
+            };
         case PUT_ACTIVITY_BY_ID:
             return { ...state };
         case LOADING:
             return {
                 ...state,
                 loading: true,
-            }
-        case POST_ACTIVITY:
+            };
+        case NO_LOADING:
             return {
                 ...state,
-                activities: [...state.activities, payload],
+                loading: false,
             };
         case SORT_BY_NAME:
             return {

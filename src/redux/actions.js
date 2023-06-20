@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, NUMBER_PAGE, GET_COUNTRY_BY_ID, CLEAN_DETAIL, POST_ACTIVITY, RESET, GET_ACTIVITIES, SORT_BY_NAME, SORT_BY_POPULATION, FILTER_CONTINENT, FILTER_ACTIVITY, DELETE_ACTIVITY, PUT_ACTIVITY_BY_ID, LOADING } from "./actionsTypes";
+import { GET_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, NUMBER_PAGE, GET_COUNTRY_BY_ID, CLEAN_DETAIL, POST_ACTIVITY, RESET, GET_ACTIVITIES, SORT_BY_NAME, SORT_BY_POPULATION, FILTER_CONTINENT, FILTER_ACTIVITY, DELETE_ACTIVITY, PUT_ACTIVITY_BY_ID, LOADING, NO_LOADING } from "./actionsTypes";
 
 const URL = "https://pi-countries-back-dmol.onrender.com";
 
@@ -11,7 +11,8 @@ export const getCountries = () => {
             if (!data.length) throw Error();
             return dispatch({ type: GET_COUNTRIES, payload: data})
         } catch (error) {
-            alert("Countries couldn't be loaded");           
+            alert("Countries couldn't be loaded");
+            dispatch({ type: NO_LOADING })
         }
     };
 };
@@ -24,7 +25,8 @@ export const getCountryByName = (name) => {
             if (!data) throw Error();
             return dispatch({ type: GET_COUNTRY_BY_NAME, payload: data})
         } catch (error) {
-            alert("Try another name please");           
+            alert("Try another name please");
+            dispatch({ type: NO_LOADING })
         }
     };
 };
@@ -37,7 +39,8 @@ export const getCountryById = (id) => {
             if (!data) throw Error();
             return dispatch({ type: GET_COUNTRY_BY_ID, payload: data})
         } catch (error) {
-            alert("Couldn't load the detail of the country");           
+            alert("Couldn't load the detail of the country");   
+            dispatch({ type: NO_LOADING })        
         }
     };
 };
@@ -62,7 +65,8 @@ export const getActivities = () => {
             if (!data.length) throw Error();
             return dispatch({ type: GET_ACTIVITIES, payload: data})
         } catch (error) {
-            alert("No activities available");           
+            alert("No activities available");
+            dispatch({ type: NO_LOADING })
         }
     };
 };
@@ -75,7 +79,8 @@ export const deleteActivity = (id) => {
             if (!data) throw Error();
             return dispatch({ type: DELETE_ACTIVITY, payload: id})
         } catch (error) {
-            alert("Couldn't delete the activity");       
+            alert("Couldn't delete the activity");
+            dispatch({ type: NO_LOADING })
         }
     };
 };
