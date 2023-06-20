@@ -13,7 +13,7 @@ const Home = () => {
     useEffect(() => {
         if (!countriesCopy.length) dispatch(getCountries());
         if (!activities.length) dispatch(getActivities());
-    }, []);
+    }, [activities]);
 
     let first = (numPage - 1) * 10;
     let second = numPage * 10;
