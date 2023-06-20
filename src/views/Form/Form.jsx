@@ -25,7 +25,7 @@ const Form = () => {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
-        }, 300)
+        }, 400)
         if (!countriesCopy.length) dispatch(getCountries())
     }, [])
 
