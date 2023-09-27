@@ -1,8 +1,8 @@
 import axios from "axios";
 import { GET_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, NUMBER_PAGE, GET_COUNTRY_BY_ID, CLEAN_DETAIL, GET_ACTIVITY_BY_ID, CLEAN_ACTIVITY, POST_ACTIVITY, RESET, GET_ACTIVITIES, SORT_BY_NAME, SORT_BY_POPULATION, FILTER_CONTINENT, FILTER_ACTIVITY, DELETE_ACTIVITY, PUT_ACTIVITY_BY_ID, LOADING, NO_LOADING } from "./actionsTypes";
 
-// const URL = "https://pi-countries-back-dmol.onrender.com";
-const URL = "http://localhost:3001";
+const URL = "https://pi-countries-back-dmol.onrender.com";
+// const URL = "http://localhost:3001";
 
 export const getCountries = () => {
     return async (dispatch) => {
