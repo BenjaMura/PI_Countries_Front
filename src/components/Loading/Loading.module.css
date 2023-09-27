@@ -3,10 +3,12 @@
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.944);
-  min-height: 110vh;
-  min-width: 100vw;
-  margin-top: -3.5em;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
 }
 
 .rot {

@@ -1,7 +1,8 @@
 import axios from "axios";
-import { GET_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, NUMBER_PAGE, GET_COUNTRY_BY_ID, CLEAN_DETAIL, POST_ACTIVITY, RESET, GET_ACTIVITIES, SORT_BY_NAME, SORT_BY_POPULATION, FILTER_CONTINENT, FILTER_ACTIVITY, DELETE_ACTIVITY, PUT_ACTIVITY_BY_ID, LOADING, NO_LOADING } from "./actionsTypes";
+import { GET_COUNTRIES, GET_COUNTRY_BY_NAME, NEXT_PAGE, PREV_PAGE, NUMBER_PAGE, GET_COUNTRY_BY_ID, CLEAN_DETAIL, GET_ACTIVITY_BY_ID, CLEAN_ACTIVITY, POST_ACTIVITY, RESET, GET_ACTIVITIES, SORT_BY_NAME, SORT_BY_POPULATION, FILTER_CONTINENT, FILTER_ACTIVITY, DELETE_ACTIVITY, PUT_ACTIVITY_BY_ID, LOADING, NO_LOADING } from "./actionsTypes";
 
-const URL = "https://pi-countries-back-dmol.onrender.com";
+// const URL = "https://pi-countries-back-dmol.onrender.com";
+const URL = "http://localhost:3001";
 
 export const getCountries = () => {
     return async (dispatch) => {
@@ -9,6 +10,7 @@ export const getCountries = () => {
             dispatch({ type: LOADING })
             const { data } = await axios.get(`${URL}/countries`);
             if (!data.length) throw Error();
+            dispatch({ type: NO_LOADING })
             return dispatch({ type: GET_COUNTRIES, payload: data})
         } catch (error) {
             alert("Countries couldn't be loaded");
@@ -71,6 +73,21 @@ export const getActivities = () => {
     };
 };
 
+export const getActivityById = (id) => {
+    return async (dispatch) => {
+        try {
+            dispatch({ type: LOADING })
+            const { data } = await axios.get(`${URL}/activities/edit/${id}`);
+            if (!data) throw Error();
+            dispatch({ type: NO_LOADING })
+            return dispatch({ type: GET_ACTIVITY_BY_ID, payload: data})
+        } catch (error) {
+            alert("Couldn't load the detail of the activity");   
+            dispatch({ type: NO_LOADING })
+        }
+    };
+};
+
 export const deleteActivity = (id) => {
     return async (dispatch) => {
         try {
@@ -100,6 +117,12 @@ export const editActivity = (form, id) => {
 export const cleanDetail = () => {
     return {
         type: CLEAN_DETAIL,
+    };
+};
+
+export const cleanActivity = () => {
+    return {
+        type: CLEAN_ACTIVITY,
     };
 };
 

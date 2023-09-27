@@ -1,15 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountries, editActivity, getActivities } from "../../redux/actions";
-import { useNavigate, useParams } from "react-router-dom";
+import { getCountries, editActivity, getActivityById, cleanActivity } from "../../redux/actions";
+import { useParams } from "react-router-dom";
 import validationForm from "../../helpers/Validations/ValidationForm";
 import Loading from "../../components/Loading/Loading";
 import stylesForm from "./Edit.module.css";
 
 const Edit = () => {
+    const dispatch = useDispatch();
     const { id } = useParams();
-    const { countriesCopy } = useSelector((state) => state);
+    const { countriesCopy, activityDetail, loading } = useSelector((state) => state);
     const [form, setForm] = useState({
         name: "",
         difficulty: "",
@@ -18,30 +19,26 @@ const Edit = () => {
         countries: [],
     });
     const [errors, setErrors] = useState({});
-    const [loading, setLoading] = useState(false)
-
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
     
     useEffect(() => {
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false)
-        }, 300)
-        if (!countriesCopy.length) dispatch(getCountries())
+        dispatch(getActivityById(id));
+        if (!countriesCopy.length) dispatch(getCountries());
         return () => {
-            dispatch(getActivities());
+            dispatch(cleanActivity());
         };
-    }, [dispatch]);
-    
-    const isFormEmpty = useMemo(() => {
-        for (const key in form) {
-          if (form[key] !== "" && form[key].length !== 0) {
-            return false;
-          }
+    }, []);
+
+    useEffect(() => {
+        if (activityDetail && activityDetail.id == id) {
+            setForm({
+                name: activityDetail.name,
+                difficulty: activityDetail.difficulty,
+                duration: activityDetail.duration,
+                season: activityDetail.season,
+                countries: activityDetail.Countries?.map(country => country.name),
+            });
         }
-        return true;
-    }, [form]);
+    }, [activityDetail, id])
 
     const handleChange = (event) => {
         setForm({
@@ -53,22 +50,22 @@ const Edit = () => {
             [event.target.name]: event.target.value,
         }));
     };
+    
     const handleCountries = (event) => {
-        const selectedCountry = event.target.value;
-        const updatedCountries = event.target.checked
-            ? [...form.countries, selectedCountry]
-            : form.countries.filter(country => country !== selectedCountry);
+        const selectedOptions = Array.from(
+          event.target.selectedOptions,
+          (option) => option.value
+        );
         setForm({
-            ...form,
-            countries: updatedCountries,
+          ...form,
+          countries: selectedOptions,
         });
-        setErrors(validationForm({ ...form, countries: updatedCountries }));
-    };
+        setErrors(validationForm({ ...form, countries: selectedOptions }));
+      };
 
     const handleSubmit = () => {
         dispatch(editActivity(form, id));
         alert("Your activity has been modified");
-        navigate("/activities");
     };
 
     return (
@@ -94,26 +91,37 @@ const Edit = () => {
                 </div>
                 <div className={stylesForm.divSeas}>
                     <label htmlFor="season" className={stylesForm.labelSeas}>Recommended season for the activity</label>
-                    <label className={stylesForm.labelsSeas}><input id="Summer" type="radio" name="season" value="Summer" onChange={handleChange} className={stylesForm.inputSeas}/> Summer ☀️</label>
-                    <label className={stylesForm.labelsSeas}><input id="Autumn" type="radio" name="season" value="Autumn" onChange={handleChange} className={stylesForm.inputSeas}/> Autumn 🍂</label>
-                    <label className={stylesForm.labelsSeas}><input id="Winter" type="radio" name="season" value="Winter" onChange={handleChange} className={stylesForm.inputSeas}/> Winter ❄️</label>
-                    <label className={stylesForm.labelsSeas}><input id="Spring" type="radio" name="season" value="Spring" onChange={handleChange} className={stylesForm.inputSeas}/> Spring 🌸</label>
+                    <label className={stylesForm.labelsSeas}><input id="Summer" type="radio" name="season" value="Summer" checked={form.season === "Summer"} onChange={handleChange} className={stylesForm.inputSeas}/> Summer ☀️</label>
+                    <label className={stylesForm.labelsSeas}><input id="Autumn" type="radio" name="season" value="Autumn" checked={form.season === "Autumn"} onChange={handleChange} className={stylesForm.inputSeas}/> Autumn 🍂</label>
+                    <label className={stylesForm.labelsSeas}><input id="Winter" type="radio" name="season" value="Winter" checked={form.season === "Winter"} onChange={handleChange} className={stylesForm.inputSeas}/> Winter ❄️</label>
+                    <label className={stylesForm.labelsSeas}><input id="Spring" type="radio" name="season" value="Spring" checked={form.season === "Spring"} onChange={handleChange} className={stylesForm.inputSeas}/> Spring 🌸</label>
                     {errors.season && <span className={stylesForm.spans}>{errors.season}</span>}
                 </div>
                 <div className={stylesForm.divCountries}>
                     <label htmlFor="countries" className={stylesForm.labelCountries}>Countries associated with the activity</label>
-                    <div className={stylesForm.divCounts}>
-                        {countriesCopy.sort((a, b) => a.name > b.name).map((event) => (
-                            <div key={event.id}>
-                                <input id={event.id} value={event.name} name={event.name} type="checkbox" onChange={handleCountries} className={stylesForm.inputImg}/>
-                                <img src={event.flag} alt={event.flag} className={stylesForm.imgCountries}/>
-                                <label htmlFor={event.id} className={stylesForm.labelsCounts}> {event.name}</label>    
-                            </div>
-                        ))}
-                    </div>
+                    <select
+                name="countries"
+                multiple
+                className={stylesForm.selectCountries}
+                value={form.countries}
+                onChange={handleCountries}
+              >
+                {countriesCopy
+                  .sort((a, b) => a.name > b.name)
+                  .map((country) => (
+                    <option key={country.id} value={country.name}>
+                      <img
+                        src={country.flag}
+                        alt={country.flag}
+                        className={stylesForm.imgCountries}
+                      />
+                      {country.name}
+                    </option>
+                  ))}
+              </select>
                     {errors.countries && <span className={stylesForm.spans}>{errors.countries}</span>}
                 </div>
-                <button className={stylesForm.btnSubmit} type="submit" disabled={isFormEmpty || Object.keys(errors).length}>Modify activity</button>
+                <button className={stylesForm.btnSubmit} type="submit" disabled={Object.keys(errors).length}>Modify activity</button>
             </form>
             </div>
             )}

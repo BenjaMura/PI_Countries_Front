@@ -91,23 +91,21 @@
     font-size: 3vh;
 }
 
-.divCounts {
-    background-color: rgba(249, 145, 145, 0.688);
-    border-radius: 1em;
-    display: grid;
-    gap: 10px;
-    padding: 0.5em;
+.selectCountries {
+    width: 100%;
+    height: 15em;
     margin-top: 0.5em;
-    grid-template-columns: repeat(5, 1fr);
-    justify-items: start;
-    align-items: center;
-    text-align: left;
+    border-radius: 0.5em;
+    background-color: rgba(249, 145, 145, 0.688);
+    padding: 0.25em;
+    font-size: medium;
 }
 
 .imgCountries {
     border: ridge black;
     width: 15px;
     height: 10px;
+    margin: 0 0.5em;
 }
 
 .inputImg {
