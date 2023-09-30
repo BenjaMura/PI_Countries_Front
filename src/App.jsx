@@ -1,11 +1,14 @@
 import './App.css';
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 import { Landing, Home, Detail, Form, NotFound, Activities, Edit } from "./views";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from './components/Footer/Footer';
+import { getActivities, getCountries } from './redux/actions';
 
 function App() {
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const showComponents = () => {
     if (location.pathname === "/home" ||
@@ -18,6 +21,11 @@ function App() {
     return false
   };
   
+  useEffect(() => {
+    dispatch(getCountries());
+    dispatch(getActivities());
+  }, []);
+
   return (
     <div className="App">
       {showComponents() &&
